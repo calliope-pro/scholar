@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+uvicorn = "*"
+requests = "*"
+bs4 = "*"
+lxml = "*"
+
+[dev-packages]
+black = "*"
+
+[scripts]
+r = 'uvicorn main:app --reload'
+fmt = 'black .'
+
+[requires]
+python_version = "3.11"
+python_full_version = "3.11.0"
