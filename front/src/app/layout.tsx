@@ -4,7 +4,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: '東工大奨学金検索',
-  description: '東工大奨学金が検索しやすいようにしたサイトです',
+  description: '理系単科大学とは思えないクソすぎるUIの東工大奨学金サイトを検索しやすいようにしたサイトです',
 }
 
 export default function RootLayout({
