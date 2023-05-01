@@ -10,8 +10,5 @@ micros:
   - name: front
     src: front
     engine: next
-    presets:
-      env:
-        - name: API_ORIGIN
     primary: true
     public: true

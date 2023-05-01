@@ -19,7 +19,11 @@ type ScholarDataType = {
 };
 
 const fetcher = async () => {
-  const response = await fetch(new URL(process.env.NODE_ENV === 'production' ? '/api/back/' : '/back/', process.env.NEXT_PUBLIC_API_ORIGIN).href);
+  const path = process.env.NODE_ENV === 'production' ? '/api/back/' : '/back/';
+  const origin = process.env.NEXT_PUBLIC_API_ORIGIN || 'https://scholar-1-e4000274.deta.app';
+  const response = await fetch(
+    new URL(path, origin).href
+  );
   const data: ScholarDataType[] = await response.json();
   return data;
 };
