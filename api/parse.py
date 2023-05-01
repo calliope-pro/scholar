@@ -1,6 +1,8 @@
-import unicodedata
 import re
+from typing import Optional, Literal
+import unicodedata
 
+Duplication = Literal['o', 'x', '?']
 
 # 2
 def parse_grade_mini(target: str, grade: str) -> str:
@@ -30,7 +32,7 @@ def parse_grade_mini(target: str, grade: str) -> str:
 
 def parse_grade(results: dict[str, str], query: str) -> list[str]:
     if query not in results:
-        return "?"
+        return []
     target1 = results[query]
     grade = []
     # zenkaku to hankaku
@@ -76,15 +78,13 @@ def parse_grade(results: dict[str, str], query: str) -> list[str]:
                         grade.append("D" + tmp_list[i])
             else:
                 grade += ["M1", "M2", "D1", "D2", "D3"]
-    # print(target1)
-    # print(grade)
     return grade
 
 
 # 3
-def parse_people(results: dict[str, str], query: str) -> int:
+def parse_people(results: dict[str, str], query: str) -> Optional[int]:
     if query not in results:
-        return "?"
+        return None
     target1 = results[query]
 
     # zenkaku to hankaku
@@ -92,20 +92,18 @@ def parse_people(results: dict[str, str], query: str) -> int:
     target1 = target1.split("(")[0]
 
     if "直接応募" == target1:
-        people = "?"
+        people = None
     elif "若干名" == target1:
         people = 3
     else:
         people = int(re.findall(r"\d+", target1)[-1])
-    # print(target1)
-    # print(people)
     return people
 
 
 # 5
-def parse_amount(results: dict[str, str], query: str) -> int:
+def parse_amount(results: dict[str, str], query: str) -> Optional[int]:
     if query not in results:
-        return "?"
+        return None
     target1 = results[query]
     # zenkaku to hankaku
     target1 = unicodedata.normalize("NFKC", target1)
@@ -119,7 +117,7 @@ def parse_amount(results: dict[str, str], query: str) -> int:
     target1 = target1.replace("百", "00")
 
     amount = 0
-    re_results = re.findall(r"\d+円", target1)
+    re_results: list[str] = re.findall(r"\d+円", target1)
     if len(re_results) == 1 and "年" not in target1:
         amount = int(re_results[0].strip("円")) * 12
     elif len(re_results) == 1 and (
@@ -135,12 +133,11 @@ def parse_amount(results: dict[str, str], query: str) -> int:
             amount = min_amount * 12
         else:
             amount = min_amount
-    # print(amount)
     return amount
 
 
 # 7
-def parse_duplication(results: dict[str, str], query: str) -> str:
+def parse_duplication(results: dict[str, str], query: str) -> Duplication:
     if query not in results:
         return "?"
     # zenkaku to hankaku
@@ -164,9 +161,7 @@ def parse_deadline(results: dict[str, str], query: str) -> str:
     target1 = unicodedata.normalize("NFKC", target1)
     re_results = re.findall(r"\d+", target1)
     deadline = ""
-    # print(target1, re_results)
     deadline = "/".join(re_results)
-    # print(deadline)
     return deadline
 
 
@@ -194,8 +189,9 @@ def parser(results: list[dict[str, str]]) -> list[dict]:
     new_results = []
 
     for i in range(0, len(results)):
-        # print(results[i]['団体名'])
-        tmp_dict = {}
+        # 1, 9
+        tmp_dict = {"団体名": results[i]["団体名"], "備考": results[i]["備考"]}
+
         # 2
         query = "対象者"
         tmp_dict[query] = parse_grade(results[i], query)
@@ -206,7 +202,7 @@ def parser(results: list[dict[str, str]]) -> list[dict]:
 
         # 5
         query = "月額"
-        tmp_dict[query] = parse_amount(results[i], query)
+        tmp_dict["年額"] = parse_amount(results[i], query)
 
         # 7
         query = "他奨学金との重複"
@@ -217,7 +213,5 @@ def parser(results: list[dict[str, str]]) -> list[dict]:
         tmp_dict[query] = parse_deadline(results[i], query)
 
         new_results.append(tmp_dict)
-
-    new_results = results + new_results
 
     return new_results

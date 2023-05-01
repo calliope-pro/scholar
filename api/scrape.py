@@ -32,4 +32,6 @@ def scrape() -> list[dict]:
 
 
 if __name__ == "__main__":
-    scrape()
+    from pprint import pprint
+
+    pprint(scrape())
