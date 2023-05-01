@@ -194,23 +194,28 @@ def parser(results: list[dict[str, str]]) -> list[dict]:
 
         # 2
         query = "対象者"
-        tmp_dict[query] = parse_grade(results[i], query)
+        new_query = "p対象者"
+        tmp_dict[new_query] = parse_grade(results[i], query)
 
         # 3
         query = "推薦人数"
-        tmp_dict[query] = parse_people(results[i], query)
+        new_query = "p推薦人数"
+        tmp_dict[new_query] = parse_people(results[i], query)
 
         # 5
         query = "月額"
-        tmp_dict["年額"] = parse_amount(results[i], query)
+        new_query = "p月額"
+        tmp_dict[new_query] = parse_amount(results[i], query)
 
         # 7
         query = "他奨学金との重複"
-        tmp_dict[query] = parse_duplication(results[i], query)
+        new_query = "p他奨学金との重複"
+        tmp_dict[new_query] = parse_duplication(results[i], query)
 
         # 8
         query = "学内選考申請締切"
-        tmp_dict[query] = parse_deadline(results[i], query)
+        new_query = "p学内選考申請締切"
+        tmp_dict[new_query] = parse_deadline(results[i], query)
 
         new_results.append(tmp_dict)
 
