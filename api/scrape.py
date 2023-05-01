@@ -2,6 +2,7 @@ from typing import Final
 
 import requests
 from bs4 import BeautifulSoup, Tag
+import parse
 
 
 def tr_parser(tr: Tag) -> dict[str, str]:
@@ -12,7 +13,8 @@ def tr_parser(tr: Tag) -> dict[str, str]:
         res[children[2].get_text(strip=True)] = children[3].get_text(strip=True)
     return res
 
-def scrape() -> dict[str, str]:
+
+def scrape() -> list[dict]:
     results = []
     URL: Final = "https://www.titech.ac.jp/students/tuition/financial-aid/scholarships"
     response = requests.get(URL)
@@ -21,11 +23,17 @@ def scrape() -> dict[str, str]:
     tables = soup.select(".scholarWrap > table")
     for table in tables:
         res = {}
-        trs = table.select('tr')
+        trs = table.select("tr")
         for tr in trs:
             res.update(tr_parser(tr))
         results.append(res)
+    results = parse.parser(results)
     return results
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
+    pass
     scrape()
+    # from pprint import pprint
+    #
+    # pprint(scrape())
