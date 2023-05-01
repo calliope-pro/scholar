@@ -183,7 +183,7 @@ def parser(results: list[dict[str, str]]) -> list[dict]:
     8. 学内選考申請締切
     9. 備考
 
-    # Change
+    # Change/Add
     2. B1, ..., M1, ..., D1, ...
     3. int
     5. int
@@ -217,5 +217,7 @@ def parser(results: list[dict[str, str]]) -> list[dict]:
         tmp_dict[query] = parse_deadline(results[i], query)
 
         new_results.append(tmp_dict)
+
+    new_results = results + new_results
 
     return new_results
