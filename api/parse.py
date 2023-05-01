@@ -189,8 +189,7 @@ def parser(results: list[dict[str, str]]) -> list[dict]:
     new_results = []
 
     for i in range(0, len(results)):
-        # 1, 9
-        tmp_dict = {"団体名": results[i]["団体名"], "備考": results[i]["備考"]}
+        tmp_dict = results[i]
 
         # 2
         query = "対象者"
@@ -204,7 +203,7 @@ def parser(results: list[dict[str, str]]) -> list[dict]:
 
         # 5
         query = "月額"
-        new_query = "p月額"
+        new_query = "p年額"
         tmp_dict[new_query] = parse_amount(results[i], query)
 
         # 7
@@ -218,5 +217,4 @@ def parser(results: list[dict[str, str]]) -> list[dict]:
         tmp_dict[new_query] = parse_deadline(results[i], query)
 
         new_results.append(tmp_dict)
-
     return new_results
