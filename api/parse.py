@@ -118,10 +118,10 @@ def parse_amount(results: dict[str, str], query: str) -> Optional[int]:
 
     amount = 0
     re_results: list[str] = re.findall(r"\d+円", target1)
-    if len(re_results) == 1 and "年" not in target1:
+    if len(re_results) == 1 and ("年" not in target1 and "一時" not in target1 and "一括" not in target1):
         amount = int(re_results[0].strip("円")) * 12
     elif len(re_results) == 1 and (
-        "年" in target1 or "一時金" in target1 or "一括支給" in target1
+        "年" in target1 or "一時" in target1 or "一括" in target1
     ):
         amount = int(re_results[0].strip("円"))
     elif len(re_results) != 1:
