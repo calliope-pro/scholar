@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardBody, Heading, Stack, Box, Text, CheckboxGroup, Checkbox, RangeSlider, RangeSliderTrack, RangeSliderFilledTrack, RangeSliderThumb, RadioGroup, Radio, Input, SimpleGrid, GridItem, Container, Link as ChakraLink, Image, useDisclosure, Flex } from '@chakra-ui/react';
+import { Card, CardHeader, CardBody, Heading, Stack, Box, Text, CheckboxGroup, Checkbox, RangeSlider, RangeSliderTrack, RangeSliderFilledTrack, RangeSliderThumb, RadioGroup, Radio, Input, SimpleGrid, GridItem, Container, Link as ChakraLink, Image, useDisclosure, Flex, Divider } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { useMemo, useState } from 'react';
 import useSWR from 'swr';
@@ -77,6 +77,13 @@ export default function Home() {
   return (
     <Container mt={8} maxW="container.md">
       <Image src='/logo.png' />
+
+      <Text>
+        理系単科大学とは思えないクソすぎるUIの
+        <ChakraLink color='blue.500' as={NextLink} href='https://www.titech.ac.jp/students/tuition/financial-aid/scholarships' target="_blank" rel="noopener noreferrer">東工大奨学金サイト</ChakraLink>
+        を検索しやすいようにしたサイトです
+      </Text>
+      <Divider my={4} />
 
       <SimpleGrid columns={3} spacing={12}>
         <GridItem>
@@ -216,6 +223,15 @@ export default function Home() {
           </>
         ))
       }
+
+      <Stack direction='row' justifyContent='end'>
+        <Text>
+          クレームはこちらへ
+          <ChakraLink color='blue.500' as={NextLink} href='https://github.com/calliope-pro/scholar' target="_blank" rel="noopener noreferrer">GitHub</ChakraLink>
+        </Text>
+        <ChakraLink color='blue.500' as={NextLink} href='/terms' target="_blank">利用規約</ChakraLink>
+        <ChakraLink color='blue.500' as={NextLink} href='/privacy' target="_blank">プライバシーポリシー</ChakraLink>
+      </Stack>
     </Container>
   )
 }
