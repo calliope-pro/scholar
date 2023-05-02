@@ -224,7 +224,7 @@ export default function Home() {
         ))
       }
 
-      <Stack direction='row' justifyContent='end'>
+      <Stack mt={4} mb={16} direction='row' justifyContent='end'>
         <Text>
           クレームはこちらへ
           <ChakraLink color='blue.500' as={NextLink} href='https://github.com/calliope-pro/scholar' target="_blank" rel="noopener noreferrer">GitHub</ChakraLink>
