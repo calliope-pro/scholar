@@ -1,0 +1,18 @@
+[package]
+name = "app"
+version = "0.1.0"
+edition = "2021"
+authors = ["th2ch-g"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "*"
+actix-cors = "*"
+serde = { version = "*", features = ["derive"]  }
+serde_json = "*"
+reqwest = { version = "*", features = ["blocking", "json"] }
+scraper = "*"
+
+[dev-dependencies]
+cargo-watch = "*"
