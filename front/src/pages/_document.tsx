@@ -38,7 +38,13 @@ export default function Document() {
                     name="theme-color"
                     content="#ff0000"
                 />
-                <meta name='description' content='理系単科大学とは思えないクソすぎるUIの東工大奨学金サイトを検索しやすいようにしたサイトです'/>
+                <meta name="description" content="理系単科大学とは思えないクソすぎるUIの東工大奨学金サイトを検索しやすいようにしたサイトです" />
+                <script
+                    async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5059912395081075"
+                    crossOrigin="anonymous"
+                />
+                <meta name="google-site-verification" content="siNP3m17WDjCX1MmxhKAbecqOMiM7qWTmChPwtZJn8w" />
             </Head>
             <body>
                 <Main />
