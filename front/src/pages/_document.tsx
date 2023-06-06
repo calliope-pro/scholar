@@ -44,7 +44,11 @@ export default function Document() {
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5059912395081075"
                     crossOrigin="anonymous"
                 />
-                <meta name="google-site-verification" content="siNP3m17WDjCX1MmxhKAbecqOMiM7qWTmChPwtZJn8w" />
+                <meta name="google-site-verification" content="siNP3m17WDjCX1MmxhKAbecqOMiM7qWTmChPwtZJn8w"  />
+                <meta
+                    property="og:image"
+                    content='og_image.jpg'
+                />
             </Head>
             <body>
                 <Main />
