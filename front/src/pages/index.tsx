@@ -76,7 +76,7 @@ export default function Home() {
 
   return (
     <Container mt={8} maxW="container.md">
-      <Image src='/logo.png' />
+      <Image src="/logo.png" alt="logo" />
 
       <Text>
         理系単科大学とは思えないクソすぎるUIの
