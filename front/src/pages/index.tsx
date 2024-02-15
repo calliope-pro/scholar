@@ -79,7 +79,7 @@ export default function Home() {
       <Image src="/logo.png" alt="logo" />
 
       <Text>
-        理系単科大学とは思えないクソすぎるUIの
+        理系単科大学とは思えないアレすぎるUIの
         <ChakraLink color='blue.500' as={NextLink} href='https://www.titech.ac.jp/students/tuition/financial-aid/scholarships' target="_blank" rel="noopener noreferrer">東工大奨学金サイト</ChakraLink>
         を検索しやすいようにしたサイトです
       </Text>
