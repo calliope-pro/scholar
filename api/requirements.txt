@@ -1,6 +1,0 @@
-bs4==0.0.1
-beautifulsoup4==4.12.2
-fastapi==0.95.1
-lxml==4.9.2
-requests==2.29.0
-uvicorn==0.22.0
