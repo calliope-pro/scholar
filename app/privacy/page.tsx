@@ -1,3 +1,5 @@
+'use client';
+
 import { Container, Heading, Text } from "@chakra-ui/react";
 
 export default function Privacy() {
