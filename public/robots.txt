@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://science-tokyo-scholar.vercel.app/sitemap.xml
