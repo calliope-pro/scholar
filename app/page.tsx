@@ -83,10 +83,10 @@ export default function Home() {
   ]);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-cyan-50 transition-colors duration-500">
+    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-teal-800 to-emerald-900 transition-colors duration-500">
       <div className="container mx-auto max-w-5xl px-4 py-8">
         {/* ロゴ＆説明 */}
-        <div className="mb-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-6 flex flex-col items-center">
+        <div className="mb-8 bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20 p-8 flex flex-col items-center">
           <Image
             src="/logo.png"
             alt="logo"
@@ -95,10 +95,10 @@ export default function Home() {
             priority
             className="mb-6 select-none w-auto max-w-full h-auto"
           />
-          <p className="text-slate-700 text-lg text-center max-w-xl">
+          <p className="text-slate-600 text-lg text-center max-w-xl font-medium">
             <Link
               href="https://www.titech.ac.jp/students/tuition/financial-aid/scholarships"
-              className="text-emerald-600 hover:text-cyan-600 font-semibold underline underline-offset-2 transition-colors duration-300"
+              className="text-orange-600 hover:text-amber-500 font-bold underline underline-offset-2 transition-all duration-300 hover:scale-105"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -109,16 +109,16 @@ export default function Home() {
         </div>
 
         {/* フィルターセクション */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8 mb-8 transition-all duration-300">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl border border-white/30 p-10 mb-10 transition-all duration-300">
           {/* 対象者 */}
           <div className="grid">
-            <label className="block text-sm font-semibold text-slate-700 mb-2 select-none">
+            <label className="block text-sm font-bold text-slate-800 mb-3 select-none uppercase tracking-wide">
               対象者
             </label>
             <div>
               <Listbox value={targets} onChange={setTargets} multiple>
                   <Listbox.Button
-                    className="relative w-full cursor-pointer rounded-xl bg-white py-3 pl-4 pr-10 text-left border border-slate-300 hover:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 transition-colors duration-300"
+                    className="relative w-full cursor-pointer rounded-xl bg-white py-4 pl-5 pr-12 text-left border-2 border-slate-300 hover:border-orange-400 focus:outline-none focus:ring-4 focus:ring-orange-200 focus:border-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl"
                     aria-label="対象者選択"
                   >
                     <span className="block truncate font-medium text-slate-800">
@@ -147,7 +147,7 @@ export default function Home() {
                           className={({ active }) =>
                             `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
                               active
-                                ? "bg-cyan-100 text-cyan-900"
+                                ? "bg-orange-100 text-orange-900"
                                 : "text-slate-900"
                             }`
                           }
@@ -163,7 +163,7 @@ export default function Home() {
                                 {grade}
                               </span>
                               {selected && (
-                                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-cyan-600">
+                                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-orange-600">
                                   <CheckIcon
                                     className="h-5 w-5"
                                     aria-hidden="true"
@@ -182,7 +182,7 @@ export default function Home() {
 
           {/* 他奨学金との重複 */}
           <div className="grid">
-            <label className="block text-sm font-semibold text-slate-700 mb-2 select-none">
+            <label className="block text-sm font-bold text-slate-800 mb-3 select-none uppercase tracking-wide">
               他奨学金との重複
             </label>
             <RadioGroup
@@ -201,8 +201,8 @@ export default function Home() {
                         className={`cursor-pointer rounded-xl px-5 py-2 shadow-sm ring-1 ring-inset ring-slate-300 select-none 
                           ${
                             checked
-                              ? "bg-emerald-400 text-emerald-900 shadow-md ring-emerald-400"
-                              : "bg-white text-slate-800 hover:bg-cyan-50"
+                              ? "bg-gradient-to-r from-teal-500 to-emerald-500 text-white shadow-lg ring-2 ring-teal-300"
+                              : "bg-white text-slate-800 hover:bg-teal-50 border border-slate-300"
                           } transition-colors duration-300`}
                       >
                         {label}
@@ -216,12 +216,12 @@ export default function Home() {
 
           {/* 学内選考申請締切 */}
           <div className="grid">
-            <label className="block text-sm font-semibold text-slate-700 mb-2 select-none">
+            <label className="block text-sm font-bold text-slate-800 mb-3 select-none uppercase tracking-wide">
               学内選考申請締切
             </label>
             <input
               type="date"
-              className="block w-full rounded-xl border border-slate-300 bg-white py-3 px-4 text-slate-900 shadow-sm focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400 sm:text-sm transition-colors duration-300"
+              className="block w-full rounded-xl border-2 border-slate-300 bg-white py-4 px-5 text-slate-900 shadow-lg focus:border-orange-400 focus:ring-4 focus:ring-orange-200 sm:text-sm transition-all duration-300"
               value={expire ?? ""}
               onChange={(e) => setExpire(e.target.value)}
               aria-label="学内選考申請締切日"
@@ -232,8 +232,8 @@ export default function Home() {
                   checked={isExpireChecked}
                   onChange={setIsExpireChecked}
                   className={`${
-                    isExpireChecked ? "bg-emerald-500" : "bg-gray-300"
-                  } relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300`}
+                    isExpireChecked ? "bg-gradient-to-r from-teal-500 to-emerald-500" : "bg-gray-300"
+                  } relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 shadow-lg`}
                 >
                   <span className="sr-only">不明含む</span>
                   <span
@@ -249,13 +249,13 @@ export default function Home() {
         </div>
 
         {/* 推薦人数 & 年額フィルター */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 mb-8 transition-all duration-300">
+        <div className="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl border border-white/30 p-10 mb-10 transition-all duration-300">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* 推薦人数 */}
             <div>
               <label
                 htmlFor="peopleRange"
-                className="block text-sm font-semibold text-slate-700 mb-3 select-none"
+                className="block text-sm font-bold text-slate-800 mb-4 select-none uppercase tracking-wide"
               >
                 推薦人数 ({peopleRange[0]}~{peopleRange[1]}人)
               </label>
@@ -273,19 +273,19 @@ export default function Home() {
                 }}
                 aria-label="推薦人数の範囲"
               >
-                <Slider.Track className="relative bg-cyan-200 rounded-full flex-grow h-2">
-                  <Slider.Range className="absolute bg-emerald-500 rounded-full h-full" />
+                <Slider.Track className="relative bg-slate-300 rounded-full flex-grow h-3 shadow-inner">
+                  <Slider.Range className="absolute bg-gradient-to-r from-teal-500 to-emerald-500 rounded-full h-full shadow-sm" />
                 </Slider.Track>
-                <Slider.Thumb className="block w-5 h-5 bg-emerald-600 rounded-full shadow-lg hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition" />
-                <Slider.Thumb className="block w-5 h-5 bg-emerald-600 rounded-full shadow-lg hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition" />
+                <Slider.Thumb className="block w-6 h-6 bg-gradient-to-br from-teal-600 to-emerald-600 rounded-full shadow-xl hover:shadow-2xl hover:scale-110 focus:outline-none focus:ring-4 focus:ring-teal-300 transition-all duration-200 border-2 border-white" />
+                <Slider.Thumb className="block w-6 h-6 bg-gradient-to-br from-teal-600 to-emerald-600 rounded-full shadow-xl hover:shadow-2xl hover:scale-110 focus:outline-none focus:ring-4 focus:ring-teal-300 transition-all duration-200 border-2 border-white" />
               </Slider.Root>
               <div className="mt-4 flex items-center select-none">
                 <Switch
                   checked={isPeopleChecked}
                   onChange={setIsPeopleChecked}
                   className={`${
-                    isPeopleChecked ? "bg-emerald-500" : "bg-gray-300"
-                  } relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300`}
+                    isPeopleChecked ? "bg-gradient-to-r from-teal-500 to-emerald-500" : "bg-gray-300"
+                  } relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 shadow-lg`}
                 >
                   <span className="sr-only">直接応募・不明含む</span>
                   <span
@@ -304,7 +304,7 @@ export default function Home() {
             <div>
               <label
                 htmlFor="amountRange"
-                className="block text-sm font-semibold text-slate-700 mb-3 select-none"
+                className="block text-sm font-bold text-slate-800 mb-4 select-none uppercase tracking-wide"
               >
                 年額 ({amoutRange[0]}~{amoutRange[1]}万円)
               </label>
@@ -322,19 +322,19 @@ export default function Home() {
                 }}
                 aria-label="年額の範囲"
               >
-                <Slider.Track className="relative bg-cyan-200 rounded-full flex-grow h-2">
-                  <Slider.Range className="absolute bg-emerald-500 rounded-full h-full" />
+                <Slider.Track className="relative bg-slate-300 rounded-full flex-grow h-3 shadow-inner">
+                  <Slider.Range className="absolute bg-gradient-to-r from-teal-500 to-emerald-500 rounded-full h-full shadow-sm" />
                 </Slider.Track>
-                <Slider.Thumb className="block w-5 h-5 bg-emerald-600 rounded-full shadow-lg hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition" />
-                <Slider.Thumb className="block w-5 h-5 bg-emerald-600 rounded-full shadow-lg hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition" />
+                <Slider.Thumb className="block w-6 h-6 bg-gradient-to-br from-teal-600 to-emerald-600 rounded-full shadow-xl hover:shadow-2xl hover:scale-110 focus:outline-none focus:ring-4 focus:ring-teal-300 transition-all duration-200 border-2 border-white" />
+                <Slider.Thumb className="block w-6 h-6 bg-gradient-to-br from-teal-600 to-emerald-600 rounded-full shadow-xl hover:shadow-2xl hover:scale-110 focus:outline-none focus:ring-4 focus:ring-teal-300 transition-all duration-200 border-2 border-white" />
               </Slider.Root>
               <div className="mt-4 flex items-center select-none">
                 <Switch
                   checked={isAmountChecked}
                   onChange={setIsAmountChecked}
                   className={`${
-                    isAmountChecked ? "bg-emerald-500" : "bg-gray-300"
-                  } relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300`}
+                    isAmountChecked ? "bg-gradient-to-r from-teal-500 to-emerald-500" : "bg-gray-300"
+                  } relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 shadow-lg`}
                 >
                   <span className="sr-only">直接応募・不明含む</span>
                   <span
@@ -353,7 +353,7 @@ export default function Home() {
 
         {/* 検索結果 */}
         <div className="flex justify-end mb-8">
-          <span className="bg-emerald-100 text-emerald-800 font-semibold rounded-full px-5 py-2 shadow-sm select-none transition-colors duration-300">
+          <span className="bg-gradient-to-r from-teal-600 to-emerald-600 text-white font-bold rounded-full px-6 py-3 shadow-xl select-none transition-all duration-300 hover:shadow-2xl hover:scale-105 ring-2 ring-orange-300">
             検索結果: {filteredScholarData.length}/{(scholarData || []).length}
             件
           </span>
@@ -365,12 +365,12 @@ export default function Home() {
             <div
               key={scholarColumn["団体名"]}
               id={scholarColumn["団体名"]}
-              className="bg-white shadow-md rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 transform cursor-pointer select-none"
+              className="bg-white shadow-xl rounded-3xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 transform cursor-pointer select-none border border-slate-100"
             >
               <div className="px-10 py-6 border-b border-slate-200">
                 <Link
                   href={`#${scholarColumn["団体名"]}`}
-                  className="text-2xl font-extrabold tracking-tight text-slate-900 hover:text-cyan-600 transition-colors duration-300"
+                  className="text-2xl font-extrabold tracking-tight text-slate-900 hover:text-orange-600 transition-all duration-300 hover:scale-105"
                 >
                   {scholarColumn["団体名"]}
                 </Link>
@@ -431,7 +431,7 @@ export default function Home() {
                       href={`https://www.google.com/search?q=${encodeURIComponent(
                         scholarColumn["団体名"]
                       )}`}
-                      className="text-cyan-600 hover:text-cyan-800 font-semibold"
+                      className="text-orange-600 hover:text-amber-500 font-bold transition-all duration-300 hover:scale-105"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -445,14 +445,14 @@ export default function Home() {
         </div>
 
         {/* フッター */}
-        <footer className="bg-white/90 backdrop-blur-sm mt-16 py-10 border-t border-slate-200 rounded-3xl shadow-inner select-none">
+        <footer className="bg-white/90 backdrop-blur-md mt-20 py-12 border-t-2 border-orange-200 rounded-3xl shadow-2xl select-none">
           <div className="container mx-auto max-w-5xl px-4">
             <div className="flex flex-col sm:flex-row justify-between items-center gap-6 text-slate-600 text-sm font-medium">
               <p>
                 クレームはこちらへ
                 <Link
                   href="https://github.com/calliope-pro/scholar"
-                  className="text-emerald-600 hover:text-cyan-600 ml-2 inline-flex items-center underline underline-offset-2 transition-colors duration-300"
+                  className="text-teal-600 hover:text-orange-500 ml-2 inline-flex items-center underline underline-offset-2 transition-all duration-300 font-bold hover:scale-105"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -461,14 +461,14 @@ export default function Home() {
               </p>
               <Link
                 href="/terms"
-                className="hover:text-cyan-600 underline underline-offset-2 transition-colors duration-300"
+                className="hover:text-orange-600 underline underline-offset-2 transition-all duration-300 font-medium hover:scale-105"
                 target="_blank"
               >
                 利用規約
               </Link>
               <Link
                 href="/privacy"
-                className="hover:text-cyan-600 underline underline-offset-2 transition-colors duration-300"
+                className="hover:text-orange-600 underline underline-offset-2 transition-all duration-300 font-medium hover:scale-105"
                 target="_blank"
               >
                 プライバシーポリシー
