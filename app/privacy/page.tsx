@@ -1,3 +1,23 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "プライバシーポリシー | 東工大奨学金検索",
+  description: "東工大奨学金検索サイトのプライバシーポリシーです。個人情報の取り扱いについて詳しく説明しています。",
+  robots: { index: true, follow: true },
+  alternates: {
+    canonical: "https://science-tokyo-scholar.vercel.app/privacy",
+  },
+  openGraph: {
+    title: "プライバシーポリシー | 東工大奨学金検索",
+    description: "東工大奨学金検索サイトのプライバシーポリシー",
+    url: "https://science-tokyo-scholar.vercel.app/privacy",
+  },
+  twitter: {
+    title: "プライバシーポリシー | 東工大奨学金検索",
+    description: "東工大奨学金検索サイトのプライバシーポリシー",
+  },
+};
+
 export default function Privacy() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">

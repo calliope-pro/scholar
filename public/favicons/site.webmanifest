@@ -1,6 +1,9 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "東工大奨学金検索 | 東京科学大学 奨学金データベース",
+    "short_name": "東工大奨学金検索",
+    "description": "東工大（東京科学大学）の奨学金情報を効率的に検索できるサービス",
+    "start_url": "/",
+    "scope": "/",
     "icons": [
         {
             "src": "/favicons/android-chrome-192x192.png",
@@ -13,7 +16,8 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
-    "display": "standalone"
+    "theme_color": "#0d9488",
+    "background_color": "#0c2840",
+    "display": "standalone",
+    "lang": "ja"
 }

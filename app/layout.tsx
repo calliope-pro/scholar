@@ -102,6 +102,10 @@ export default function RootLayout({
           href="/favicons/safari-pinned-tab.svg"
           color="#5bbad5"
         />
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://www.titech.ac.jp" />
+        <link rel="dns-prefetch" href="https://www.google.com" />
       </head>
       <body className="h-full bg-white">
         <script
@@ -114,31 +118,76 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "東工大奨学金検索",
-              alternateName: "東京科学大学 奨学金データベース",
-              description: "東工大（東京科学大学）の奨学金情報を効率的に検索できるサービスです。学部生・大学院生向けの給付型・貸与型奨学金情報を網羅。",
-              url: "https://science-tokyo-scholar.vercel.app",
-              potentialAction: {
-                "@type": "SearchAction",
-                target: {
-                  "@type": "EntryPoint",
-                  urlTemplate: "https://science-tokyo-scholar.vercel.app/?q={search_term_string}"
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "@id": "https://science-tokyo-scholar.vercel.app/#website",
+                  name: "東工大奨学金検索",
+                  alternateName: "東京科学大学 奨学金データベース",
+                  description: "東工大（東京科学大学）の奨学金情報を効率的に検索できるサービスです。学部生・大学院生向けの給付型・貸与型奨学金情報を網羅。",
+                  url: "https://science-tokyo-scholar.vercel.app",
+                  potentialAction: {
+                    "@type": "SearchAction",
+                    target: {
+                      "@type": "EntryPoint",
+                      urlTemplate: "https://science-tokyo-scholar.vercel.app/?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                  },
+                  publisher: {
+                    "@id": "https://science-tokyo-scholar.vercel.app/#organization"
+                  },
+                  about: {
+                    "@id": "https://science-tokyo-scholar.vercel.app/#educationalorganization"
+                  },
+                  keywords: "東工大,東京科学大学,奨学金,scholarship,学費,給付型奨学金,貸与型奨学金,学部生,大学院生,博士課程,修士課程,理工系,研究支援,学生支援,Tokyo Tech,Science Tokyo,financial aid"
                 },
-                "query-input": "required name=search_term_string"
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "東工大奨学金検索",
-                url: "https://science-tokyo-scholar.vercel.app"
-              },
-              about: {
-                "@type": "EducationalOrganization",
-                name: "東京科学大学",
-                alternateName: ["東工大", "Tokyo Institute of Technology", "Tokyo Tech", "Science Tokyo"],
-                url: "https://www.titech.ac.jp/"
-              },
-              keywords: "東工大,東京科学大学,奨学金,scholarship,学費,給付型奨学金,貸与型奨学金,学部生,大学院生,博士課程,修士課程,理工系,研究支援,学生支援,Tokyo Tech,Science Tokyo,financial aid"
+                {
+                  "@type": "Organization",
+                  "@id": "https://science-tokyo-scholar.vercel.app/#organization",
+                  name: "東工大奨学金検索",
+                  url: "https://science-tokyo-scholar.vercel.app",
+                  logo: {
+                    "@type": "ImageObject",
+                    url: "https://science-tokyo-scholar.vercel.app/logo.png"
+                  }
+                },
+                {
+                  "@type": "EducationalOrganization",
+                  "@id": "https://science-tokyo-scholar.vercel.app/#educationalorganization",
+                  name: "東京科学大学",
+                  alternateName: ["東工大", "Tokyo Institute of Technology", "Tokyo Tech", "Science Tokyo"],
+                  url: "https://www.titech.ac.jp/",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressCountry: "JP",
+                    addressRegion: "東京都",
+                    addressLocality: "目黒区"
+                  }
+                },
+                {
+                  "@type": "Service",
+                  "@id": "https://science-tokyo-scholar.vercel.app/#service",
+                  name: "奨学金検索サービス",
+                  description: "東工大（東京科学大学）の学生向け奨学金検索・フィルタリングサービス",
+                  provider: {
+                    "@id": "https://science-tokyo-scholar.vercel.app/#organization"
+                  },
+                  serviceType: "奨学金検索サービス",
+                  areaServed: {
+                    "@type": "Place",
+                    name: "日本",
+                    address: {
+                      "@type": "PostalAddress",
+                      addressCountry: "JP"
+                    }
+                  },
+                  audience: {
+                    "@type": "EducationalAudience",
+                    educationalRole: ["学部生", "大学院生", "博士課程学生", "修士課程学生"]
+                  }
+                }
+              ]
             })
           }}
         />

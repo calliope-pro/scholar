@@ -1,3 +1,23 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "利用規約・免責事項 | 東工大奨学金検索",
+  description: "東工大奨学金検索サイトの利用規約と免責事項です。ご利用前に必ずお読みください。",
+  robots: { index: true, follow: true },
+  alternates: {
+    canonical: "https://science-tokyo-scholar.vercel.app/terms",
+  },
+  openGraph: {
+    title: "利用規約・免責事項 | 東工大奨学金検索",
+    description: "東工大奨学金検索サイトの利用規約と免責事項",
+    url: "https://science-tokyo-scholar.vercel.app/terms",
+  },
+  twitter: {
+    title: "利用規約・免責事項 | 東工大奨学金検索",
+    description: "東工大奨学金検索サイトの利用規約と免責事項",
+  },
+};
+
 export default function Terms() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
