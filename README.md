@@ -17,13 +17,16 @@
 - **効率的な検索**: 学年、金額、締切日等で絞り込み検索が可能
 - **モバイル対応**: レスポンシブデザインでスマートフォンにも対応
 - **SEO最適化**: 構造化データ、OpenGraph、Twitter Cards対応
-- **高速表示**: Next.js App Routerによる最適化されたパフォーマンス
+- **高速表示**: Next.js App Router + ISRによる最適化されたパフォーマンス
+- **リアルタイム更新**: 1時間ごとに最新の奨学金情報を自動取得
 
 ## 🛠 技術スタック
 
 - **フレームワーク**: Next.js 14 (App Router)
 - **言語**: TypeScript
 - **スタイリング**: Tailwind CSS
+- **データ取得**: Cheerio (Webスクレイピング)
+- **レンダリング**: ISR (Incremental Static Regeneration)
 - **デプロイ**: Vercel
 - **SEO**: 構造化データ (JSON-LD), OpenGraph, Twitter Cards
 
@@ -55,14 +58,16 @@ yarn dev
 ```
 scholar/
 ├── app/                    # Next.js App Router
-│   ├── api/               # APIルート
 │   ├── components/        # Reactコンポーネント
 │   ├── privacy/           # プライバシーポリシー
 │   ├── terms/             # 利用規約
 │   ├── layout.tsx         # ルートレイアウト
 │   ├── page.tsx           # ホームページ
+│   ├── HomeClient.tsx     # クライアントサイドコンポーネント
 │   ├── globals.css        # グローバルスタイル
 │   └── sitemap.ts         # サイトマップ生成
+├── lib/                   # 共通ライブラリ
+│   └── scholarships.ts    # 奨学金データ取得・解析ロジック
 ├── public/                # 静的ファイル
 │   ├── favicons/          # ファビコン
 │   ├── ads.txt            # 広告設定
