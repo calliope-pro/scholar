@@ -83,10 +83,15 @@ export default function Home() {
   ]);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-teal-800 to-emerald-900 transition-colors duration-500">
-      <div className="container mx-auto max-w-5xl px-4 py-8">
+    <>
+      <div className="freeform-gradient">
+        <div className="blob1"></div>
+        <div className="blob2"></div>
+      </div>
+      <main className="min-h-screen relative z-10">
+        <div className="container mx-auto max-w-5xl px-4 py-8">
         {/* ロゴ＆説明 */}
-        <div className="mb-8 bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20 p-8 flex flex-col items-center">
+        <div className="mb-8 morphism-card rounded-3xl p-8 flex flex-col items-center">
           <Image
             src="/logo.png"
             alt="logo"
@@ -95,10 +100,10 @@ export default function Home() {
             priority
             className="mb-6 select-none w-auto max-w-full h-auto"
           />
-          <p className="text-slate-600 text-lg text-center max-w-xl font-medium">
+          <p className="text-slate-100 text-lg text-center max-w-xl font-medium">
             <Link
               href="https://www.titech.ac.jp/students/tuition/financial-aid/scholarships"
-              className="text-orange-600 hover:text-amber-500 font-bold underline underline-offset-2 transition-all duration-300 hover:scale-105"
+              className="text-amber-300 hover:text-amber-200 font-bold underline underline-offset-2 transition-all duration-300"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -109,19 +114,19 @@ export default function Home() {
         </div>
 
         {/* フィルターセクション */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl border border-white/30 p-10 mb-10 transition-all duration-300">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 morphism-card rounded-3xl p-10 mb-10">
           {/* 対象者 */}
           <div className="grid">
-            <label className="block text-sm font-bold text-slate-800 mb-3 select-none uppercase tracking-wide">
+            <label className="block text-sm font-bold text-slate-100 mb-3 select-none uppercase tracking-wide">
               対象者
             </label>
             <div>
               <Listbox value={targets} onChange={setTargets} multiple>
                   <Listbox.Button
-                    className="relative w-full cursor-pointer rounded-xl bg-white py-4 pl-5 pr-12 text-left border-2 border-slate-300 hover:border-orange-400 focus:outline-none focus:ring-4 focus:ring-orange-200 focus:border-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="relative w-full cursor-pointer rounded-xl bg-white/10 py-4 pl-5 pr-12 text-left border-2 border-slate-300/50 hover:border-orange-400 focus:outline-none focus:ring-4 focus:ring-orange-200 focus:border-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl"
                     aria-label="対象者選択"
                   >
-                    <span className="block truncate font-medium text-slate-800">
+                    <span className="block truncate font-medium text-slate-100">
                       {targets.length === 0
                         ? "選択してください"
                         : targets.join(", ")}
@@ -140,7 +145,7 @@ export default function Home() {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm text-slate-900">
+                    <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-slate-800/90 backdrop-blur-sm shadow-lg ring-1 ring-slate-600 focus:outline-none text-sm text-slate-100">
                       {grades.map((grade) => (
                         <Listbox.Option
                           key={grade}
@@ -148,7 +153,7 @@ export default function Home() {
                             `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
                               active
                                 ? "bg-orange-100 text-orange-900"
-                                : "text-slate-900"
+                                : "text-slate-100"
                             }`
                           }
                           value={grade}
@@ -163,7 +168,7 @@ export default function Home() {
                                 {grade}
                               </span>
                               {selected && (
-                                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-orange-600">
+                                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-300">
                                   <CheckIcon
                                     className="h-5 w-5"
                                     aria-hidden="true"
@@ -182,7 +187,7 @@ export default function Home() {
 
           {/* 他奨学金との重複 */}
           <div className="grid">
-            <label className="block text-sm font-bold text-slate-800 mb-3 select-none uppercase tracking-wide">
+            <label className="block text-sm font-bold text-slate-100 mb-3 select-none uppercase tracking-wide">
               他奨学金との重複
             </label>
             <RadioGroup
@@ -201,8 +206,8 @@ export default function Home() {
                         className={`cursor-pointer rounded-xl px-5 py-2 shadow-sm ring-1 ring-inset ring-slate-300 select-none 
                           ${
                             checked
-                              ? "bg-gradient-to-r from-teal-500 to-emerald-500 text-white shadow-lg ring-2 ring-teal-300"
-                              : "bg-white text-slate-800 hover:bg-teal-50 border border-slate-300"
+                              ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg ring-2 ring-blue-300"
+                              : "bg-white/10 text-slate-100 hover:bg-white/20 border border-slate-300/50"
                           } transition-colors duration-300`}
                       >
                         {label}
@@ -216,12 +221,12 @@ export default function Home() {
 
           {/* 学内選考申請締切 */}
           <div className="grid">
-            <label className="block text-sm font-bold text-slate-800 mb-3 select-none uppercase tracking-wide">
+            <label className="block text-sm font-bold text-slate-100 mb-3 select-none uppercase tracking-wide">
               学内選考申請締切
             </label>
             <input
               type="date"
-              className="block w-full rounded-xl border-2 border-slate-300 bg-white py-4 px-5 text-slate-900 shadow-lg focus:border-orange-400 focus:ring-4 focus:ring-orange-200 sm:text-sm transition-all duration-300"
+              className="block w-full rounded-xl border-2 border-slate-300/50 bg-white/10 py-4 px-5 text-slate-100 shadow-lg hover:border-orange-400 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-200 focus:border-orange-500 sm:text-sm transition-all duration-300 placeholder-slate-300"
               value={expire ?? ""}
               onChange={(e) => setExpire(e.target.value)}
               aria-label="学内選考申請締切日"
@@ -232,7 +237,7 @@ export default function Home() {
                   checked={isExpireChecked}
                   onChange={setIsExpireChecked}
                   className={`${
-                    isExpireChecked ? "bg-gradient-to-r from-teal-500 to-emerald-500" : "bg-gray-300"
+                    isExpireChecked ? "bg-gradient-to-r from-blue-500 to-cyan-400" : "bg-gray-300"
                   } relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 shadow-lg`}
                 >
                   <span className="sr-only">不明含む</span>
@@ -242,20 +247,20 @@ export default function Home() {
                     } inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300`}
                   />
                 </Switch>
-                <span className="ml-3 text-sm text-slate-700">不明含む</span>
+                <span className="ml-3 text-sm text-slate-200">不明含む</span>
               </div>
             )}
           </div>
         </div>
 
         {/* 推薦人数 & 年額フィルター */}
-        <div className="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl border border-white/30 p-10 mb-10 transition-all duration-300">
+        <div className="morphism-card rounded-3xl p-10 mb-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* 推薦人数 */}
             <div>
               <label
                 htmlFor="peopleRange"
-                className="block text-sm font-bold text-slate-800 mb-4 select-none uppercase tracking-wide"
+                className="block text-sm font-bold text-slate-100 mb-4 select-none uppercase tracking-wide"
               >
                 推薦人数 ({peopleRange[0]}~{peopleRange[1]}人)
               </label>
@@ -274,17 +279,17 @@ export default function Home() {
                 aria-label="推薦人数の範囲"
               >
                 <Slider.Track className="relative bg-slate-300 rounded-full flex-grow h-3 shadow-inner">
-                  <Slider.Range className="absolute bg-gradient-to-r from-teal-500 to-emerald-500 rounded-full h-full shadow-sm" />
+                  <Slider.Range className="absolute bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full h-full shadow-sm" />
                 </Slider.Track>
-                <Slider.Thumb className="block w-6 h-6 bg-gradient-to-br from-teal-600 to-emerald-600 rounded-full shadow-xl hover:shadow-2xl hover:scale-110 focus:outline-none focus:ring-4 focus:ring-teal-300 transition-all duration-200 border-2 border-white" />
-                <Slider.Thumb className="block w-6 h-6 bg-gradient-to-br from-teal-600 to-emerald-600 rounded-full shadow-xl hover:shadow-2xl hover:scale-110 focus:outline-none focus:ring-4 focus:ring-teal-300 transition-all duration-200 border-2 border-white" />
+                <Slider.Thumb className="block w-6 h-6 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-full shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-200 border-2 border-white" />
+                <Slider.Thumb className="block w-6 h-6 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-full shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-200 border-2 border-white" />
               </Slider.Root>
               <div className="mt-4 flex items-center select-none">
                 <Switch
                   checked={isPeopleChecked}
                   onChange={setIsPeopleChecked}
                   className={`${
-                    isPeopleChecked ? "bg-gradient-to-r from-teal-500 to-emerald-500" : "bg-gray-300"
+                    isPeopleChecked ? "bg-gradient-to-r from-blue-500 to-cyan-400" : "bg-gray-300"
                   } relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 shadow-lg`}
                 >
                   <span className="sr-only">直接応募・不明含む</span>
@@ -294,7 +299,7 @@ export default function Home() {
                     } inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300`}
                   />
                 </Switch>
-                <span className="ml-3 text-sm text-slate-700">
+                <span className="ml-3 text-sm text-slate-200">
                   直接応募・不明含む
                 </span>
               </div>
@@ -304,7 +309,7 @@ export default function Home() {
             <div>
               <label
                 htmlFor="amountRange"
-                className="block text-sm font-bold text-slate-800 mb-4 select-none uppercase tracking-wide"
+                className="block text-sm font-bold text-slate-100 mb-4 select-none uppercase tracking-wide"
               >
                 年額 ({amoutRange[0]}~{amoutRange[1]}万円)
               </label>
@@ -323,17 +328,17 @@ export default function Home() {
                 aria-label="年額の範囲"
               >
                 <Slider.Track className="relative bg-slate-300 rounded-full flex-grow h-3 shadow-inner">
-                  <Slider.Range className="absolute bg-gradient-to-r from-teal-500 to-emerald-500 rounded-full h-full shadow-sm" />
+                  <Slider.Range className="absolute bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full h-full shadow-sm" />
                 </Slider.Track>
-                <Slider.Thumb className="block w-6 h-6 bg-gradient-to-br from-teal-600 to-emerald-600 rounded-full shadow-xl hover:shadow-2xl hover:scale-110 focus:outline-none focus:ring-4 focus:ring-teal-300 transition-all duration-200 border-2 border-white" />
-                <Slider.Thumb className="block w-6 h-6 bg-gradient-to-br from-teal-600 to-emerald-600 rounded-full shadow-xl hover:shadow-2xl hover:scale-110 focus:outline-none focus:ring-4 focus:ring-teal-300 transition-all duration-200 border-2 border-white" />
+                <Slider.Thumb className="block w-6 h-6 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-full shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-200 border-2 border-white" />
+                <Slider.Thumb className="block w-6 h-6 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-full shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-200 border-2 border-white" />
               </Slider.Root>
               <div className="mt-4 flex items-center select-none">
                 <Switch
                   checked={isAmountChecked}
                   onChange={setIsAmountChecked}
                   className={`${
-                    isAmountChecked ? "bg-gradient-to-r from-teal-500 to-emerald-500" : "bg-gray-300"
+                    isAmountChecked ? "bg-gradient-to-r from-blue-500 to-cyan-400" : "bg-gray-300"
                   } relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 shadow-lg`}
                 >
                   <span className="sr-only">直接応募・不明含む</span>
@@ -343,7 +348,7 @@ export default function Home() {
                     } inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300`}
                   />
                 </Switch>
-                <span className="ml-3 text-sm text-slate-700">
+                <span className="ml-3 text-sm text-slate-200">
                   直接応募・不明含む
                 </span>
               </div>
@@ -353,7 +358,7 @@ export default function Home() {
 
         {/* 検索結果 */}
         <div className="flex justify-end mb-8">
-          <span className="bg-gradient-to-r from-teal-600 to-emerald-600 text-white font-bold rounded-full px-6 py-3 shadow-xl select-none transition-all duration-300 hover:shadow-2xl hover:scale-105 ring-2 ring-orange-300">
+          <span className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold rounded-full px-6 py-3 shadow-xl select-none ring-2 ring-blue-300">
             検索結果: {filteredScholarData.length}/{(scholarData || []).length}
             件
           </span>
@@ -365,73 +370,73 @@ export default function Home() {
             <div
               key={scholarColumn["団体名"]}
               id={scholarColumn["団体名"]}
-              className="bg-white shadow-xl rounded-3xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 transform cursor-pointer select-none border border-slate-100"
+              className="morphism-card-subtle rounded-3xl cursor-pointer select-none"
             >
-              <div className="px-10 py-6 border-b border-slate-200">
+              <div className="px-10 py-6 border-b border-slate-400/30">
                 <Link
                   href={`#${scholarColumn["団体名"]}`}
-                  className="text-2xl font-extrabold tracking-tight text-slate-900 hover:text-orange-600 transition-all duration-300 hover:scale-105"
+                  className="text-2xl font-extrabold tracking-tight text-slate-100 hover:text-cyan-300 transition-all duration-300"
                 >
                   {scholarColumn["団体名"]}
                 </Link>
               </div>
               <div className="px-10 py-6 grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div>
-                  <dt className="text-sm font-semibold text-slate-600">備考</dt>
-                  <dd className="mt-2 text-base text-slate-900">
+                  <dt className="text-sm font-semibold text-slate-300">備考</dt>
+                  <dd className="mt-2 text-base text-slate-100">
                     {scholarColumn["備考"]}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-sm font-medium text-slate-500 uppercase">
+                  <dt className="text-sm font-medium text-slate-300 uppercase">
                     対象者
                   </dt>
-                  <dd className="mt-1 text-sm text-slate-900">
+                  <dd className="mt-1 text-sm text-slate-100">
                     {scholarColumn["対象者"]}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-sm font-medium text-slate-500 uppercase">
+                  <dt className="text-sm font-medium text-slate-300 uppercase">
                     推薦人数
                   </dt>
-                  <dd className="mt-1 text-sm text-slate-900">
+                  <dd className="mt-1 text-sm text-slate-100">
                     {scholarColumn["推薦人数"]}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-sm font-medium text-slate-500 uppercase">
+                  <dt className="text-sm font-medium text-slate-300 uppercase">
                     月額
                   </dt>
-                  <dd className="mt-1 text-sm text-slate-900">
+                  <dd className="mt-1 text-sm text-slate-100">
                     {scholarColumn["月額"]}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-sm font-medium text-slate-500 uppercase">
+                  <dt className="text-sm font-medium text-slate-300 uppercase">
                     他奨学金との重複
                   </dt>
-                  <dd className="mt-1 text-sm text-slate-900">
+                  <dd className="mt-1 text-sm text-slate-100">
                     {scholarColumn["他奨学金との重複"]}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-sm font-medium text-slate-500 uppercase">
+                  <dt className="text-sm font-medium text-slate-300 uppercase">
                     学内選考申請締切
                   </dt>
-                  <dd className="mt-1 text-sm text-slate-900">
+                  <dd className="mt-1 text-sm text-slate-100">
                     {scholarColumn["学内選考申請締切"]}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-sm font-medium text-slate-500 uppercase">
+                  <dt className="text-sm font-medium text-slate-300 uppercase">
                     Google URL
                   </dt>
-                  <dd className="mt-1 text-sm text-slate-900">
+                  <dd className="mt-1 text-sm text-slate-100">
                     <Link
                       href={`https://www.google.com/search?q=${encodeURIComponent(
                         scholarColumn["団体名"]
                       )}`}
-                      className="text-orange-600 hover:text-amber-500 font-bold transition-all duration-300 hover:scale-105"
+                      className="text-amber-300 hover:text-amber-200 font-bold transition-all duration-300"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -445,14 +450,14 @@ export default function Home() {
         </div>
 
         {/* フッター */}
-        <footer className="bg-white/90 backdrop-blur-md mt-20 py-12 border-t-2 border-orange-200 rounded-3xl shadow-2xl select-none">
+        <footer className="morphism-card mt-20 py-12 rounded-3xl select-none">
           <div className="container mx-auto max-w-5xl px-4">
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-6 text-slate-600 text-sm font-medium">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-6 text-slate-200 text-sm font-medium">
               <p>
                 クレームはこちらへ
                 <Link
                   href="https://github.com/calliope-pro/scholar"
-                  className="text-teal-600 hover:text-orange-500 ml-2 inline-flex items-center underline underline-offset-2 transition-all duration-300 font-bold hover:scale-105"
+                  className="text-cyan-300 hover:text-cyan-200 ml-2 inline-flex items-center underline underline-offset-2 transition-all duration-300 font-bold"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -461,14 +466,14 @@ export default function Home() {
               </p>
               <Link
                 href="/terms"
-                className="hover:text-orange-600 underline underline-offset-2 transition-all duration-300 font-medium hover:scale-105"
+                className="hover:text-cyan-300 underline underline-offset-2 transition-all duration-300 font-medium"
                 target="_blank"
               >
                 利用規約
               </Link>
               <Link
                 href="/privacy"
-                className="hover:text-orange-600 underline underline-offset-2 transition-all duration-300 font-medium hover:scale-105"
+                className="hover:text-cyan-300 underline underline-offset-2 transition-all duration-300 font-medium"
                 target="_blank"
               >
                 プライバシーポリシー
@@ -476,7 +481,8 @@ export default function Home() {
             </div>
           </div>
         </footer>
-      </div>
-    </main>
+        </div>
+      </main>
+    </>
   );
 }

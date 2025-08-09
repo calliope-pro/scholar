@@ -1,3 +1,190 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* フリーフォームグラデーション背景 */
+.freeform-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 40%, #334155 80%, #475569 100%);
+  overflow: hidden;
+  z-index: -1;
+}
+
+.freeform-gradient::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 60%;
+  height: 80%;
+  background: linear-gradient(45deg, rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.25));
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  filter: blur(40px);
+  animation: organic1 25s ease-in-out infinite;
+}
+
+.freeform-gradient::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  right: -15%;
+  width: 70%;
+  height: 60%;
+  background: linear-gradient(225deg, rgba(236, 72, 153, 0.25), rgba(16, 185, 129, 0.3));
+  border-radius: 40% 60% 50% 70% / 60% 30% 70% 40%;
+  filter: blur(50px);
+  animation: organic2 30s ease-in-out infinite reverse;
+}
+
+.freeform-gradient .blob1 {
+  position: absolute;
+  bottom: -10%;
+  left: 20%;
+  width: 50%;
+  height: 70%;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(139, 92, 246, 0.25));
+  border-radius: 50% 70% 30% 50% / 40% 50% 60% 70%;
+  filter: blur(35px);
+  animation: organic3 35s ease-in-out infinite;
+}
+
+.freeform-gradient .blob2 {
+  position: absolute;
+  top: 40%;
+  left: 60%;
+  width: 40%;
+  height: 50%;
+  background: linear-gradient(315deg, rgba(6, 182, 212, 0.3), rgba(16, 185, 129, 0.2));
+  border-radius: 70% 30% 60% 40% / 50% 70% 30% 60%;
+  filter: blur(45px);
+  animation: organic4 28s ease-in-out infinite;
+}
+
+@keyframes organic1 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  }
+  25% {
+    transform: translate(10%, -5%) rotate(5deg) scale(1.1);
+    border-radius: 40% 60% 50% 70% / 60% 40% 50% 60%;
+  }
+  50% {
+    transform: translate(-5%, 10%) rotate(-3deg) scale(0.9);
+    border-radius: 70% 30% 60% 40% / 40% 70% 60% 30%;
+  }
+  75% {
+    transform: translate(8%, 5%) rotate(7deg) scale(1.05);
+    border-radius: 50% 70% 40% 60% / 70% 50% 30% 70%;
+  }
+}
+
+@keyframes organic2 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    border-radius: 40% 60% 50% 70% / 60% 30% 70% 40%;
+  }
+  33% {
+    transform: translate(-8%, 12%) rotate(-8deg) scale(1.15);
+    border-radius: 70% 30% 60% 40% / 40% 60% 50% 70%;
+  }
+  66% {
+    transform: translate(12%, -8%) rotate(10deg) scale(0.85);
+    border-radius: 30% 70% 40% 60% / 70% 40% 60% 30%;
+  }
+}
+
+@keyframes organic3 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    border-radius: 50% 70% 30% 50% / 40% 50% 60% 70%;
+  }
+  20% {
+    transform: translate(15%, -10%) rotate(12deg) scale(1.2);
+    border-radius: 60% 40% 70% 30% / 70% 60% 40% 50%;
+  }
+  40% {
+    transform: translate(-10%, 15%) rotate(-15deg) scale(0.8);
+    border-radius: 40% 60% 50% 70% / 50% 40% 70% 60%;
+  }
+  60% {
+    transform: translate(20%, 8%) rotate(18deg) scale(1.1);
+    border-radius: 70% 30% 60% 40% / 60% 70% 30% 40%;
+  }
+  80% {
+    transform: translate(-5%, -12%) rotate(-10deg) scale(0.95);
+    border-radius: 30% 70% 40% 60% / 40% 30% 60% 70%;
+  }
+}
+
+@keyframes organic4 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    border-radius: 70% 30% 60% 40% / 50% 70% 30% 60%;
+  }
+  40% {
+    transform: translate(-12%, -18%) rotate(-20deg) scale(1.3);
+    border-radius: 30% 70% 40% 60% / 70% 30% 60% 40%;
+  }
+  80% {
+    transform: translate(18%, 12%) rotate(25deg) scale(0.7);
+    border-radius: 60% 40% 70% 30% / 40% 60% 70% 30%;
+  }
+}
+
+/* グラスモーフィズムスタイル */
+.morphism-card {
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  backdrop-filter: blur(40px) saturate(200%) brightness(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 2px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.morphism-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.morphism-card-subtle {
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 100%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+  backdrop-filter: blur(30px) saturate(180%) brightness(1.05);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 6px 24px rgba(0, 0, 0, 0.25),
+    0 1px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.morphism-card-subtle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.6s ease;
+}
