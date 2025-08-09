@@ -766,7 +766,7 @@ caniuse-lite@^1.0.30001702, caniuse-lite@^1.0.30001726:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001733.tgz#918405ed6647a62840fb328832cf5a03f986974b"
   integrity sha512-e4QKw/O2Kavj2VQTKZWrwzkt3IxOmIlU6ajRb6LP64LHpBo1J67k2Hi4Vu/TgJWsNtynurfS0uK3MaUTCPfu5Q==
 
-chalk@^4.0.0:
+chalk@^4.0.0, chalk@^4.1.0:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
   integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
@@ -849,6 +849,19 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
+
+critters@^0.0.25:
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/critters/-/critters-0.0.25.tgz#8568e6add4a8f68d0b1dbe0c4839286947b37888"
+  integrity sha512-ROF/tjJyyRdM8/6W0VqoN5Ql05xAGnkf5b7f3sTEl1bI5jTQQf8O918RD/V9tEb9pRY/TKcvJekDbJtniHyPtQ==
+  dependencies:
+    chalk "^4.1.0"
+    css-select "^5.1.0"
+    dom-serializer "^2.0.0"
+    domhandler "^5.0.2"
+    htmlparser2 "^8.0.2"
+    postcss "^8.4.23"
+    postcss-media-query-parser "^0.2.3"
 
 cross-spawn@^7.0.2, cross-spawn@^7.0.3, cross-spawn@^7.0.6:
   version "7.0.6"
@@ -1043,7 +1056,7 @@ enhanced-resolve@^5.12.0:
     graceful-fs "^4.2.4"
     tapable "^2.2.0"
 
-entities@^4.2.0, entities@^4.5.0:
+entities@^4.2.0, entities@^4.4.0, entities@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/entities/-/entities-4.5.0.tgz#5d268ea5e7113ec74c4d033b79ea5a35a488fb48"
   integrity sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==
@@ -1661,6 +1674,16 @@ hasown@^2.0.2:
   integrity sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==
   dependencies:
     function-bind "^1.1.2"
+
+htmlparser2@^8.0.2:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-8.0.2.tgz#f002151705b383e62433b5cf466f5b716edaec21"
+  integrity sha512-GYdjWKDkbRLkZ5geuHs5NY1puJ+PXwP7+fHPRz06Eirsb9ugf6d8kkXav6ADhcODhFFPMIXyxkxSuMf3D6NCFA==
+  dependencies:
+    domelementtype "^2.3.0"
+    domhandler "^5.0.3"
+    domutils "^3.0.1"
+    entities "^4.4.0"
 
 htmlparser2@^9.1.0:
   version "9.1.0"
@@ -2379,6 +2402,11 @@ postcss-load-config@^4.0.2:
     lilconfig "^3.0.0"
     yaml "^2.3.4"
 
+postcss-media-query-parser@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/postcss-media-query-parser/-/postcss-media-query-parser-0.2.3.tgz#27b39c6f4d94f81b1a73b8f76351c609e5cef244"
+  integrity sha512-3sOlxmbKcSHMjlUXQZKQ06jOswE7oVkXPxmZdoB1r5l0q6gTFTQSHxNxOrCccElbW7dxNytifNEo8qidX2Vsig==
+
 postcss-nested@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/postcss-nested/-/postcss-nested-6.2.0.tgz#4c2d22ab5f20b9cb61e2c5c5915950784d068131"
@@ -2408,7 +2436,7 @@ postcss@8.4.31:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-postcss@^8.4.31, postcss@^8.4.47:
+postcss@^8.4.23, postcss@^8.4.31, postcss@^8.4.47:
   version "8.5.6"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.5.6.tgz#2825006615a619b4f62a9e7426cc120b349a8f3c"
   integrity sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==
@@ -2742,13 +2770,6 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-swr@^2.1.5:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/swr/-/swr-2.1.5.tgz#688effa719c03f6d35c66decbb0f8e79c7190399"
-  integrity sha512-/OhfZMcEpuz77KavXST5q6XE9nrOBOVcBLWjMT+oAE/kQHyE3PASrevXCtQDZ8aamntOfFkbVJp7Il9tNBQWrw==
-  dependencies:
-    use-sync-external-store "^1.2.0"
-
 synckit@^0.8.5:
   version "0.8.5"
   resolved "https://registry.yarnpkg.com/synckit/-/synckit-0.8.5.tgz#b7f4358f9bb559437f9f167eb6bc46b3c9818fa3"
@@ -2921,11 +2942,6 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
-
-use-sync-external-store@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
-  integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
 
 use-sync-external-store@^1.5.0:
   version "1.5.0"
