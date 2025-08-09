@@ -188,3 +188,42 @@
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
   transition: left 0.6s ease;
 }
+
+/* アクセシビリティ - 強化されたフォーカス表示 */
+*:focus {
+  outline: 3px solid #fbbf24 !important;
+  outline-offset: 2px !important;
+}
+
+/* 特定要素のフォーカススタイル */
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+a:focus,
+[role="button"]:focus,
+[tabindex]:focus {
+  box-shadow: 
+    0 0 0 3px rgba(251, 191, 36, 0.5),
+    0 0 0 6px rgba(251, 191, 36, 0.2) !important;
+}
+
+/* スキップリンク用のスタイル強化 */
+.skip-link:focus {
+  position: absolute !important;
+  top: 1rem !important;
+  left: 1rem !important;
+  z-index: 9999 !important;
+  padding: 1rem !important;
+  background: #1e40af !important;
+  color: white !important;
+  text-decoration: none !important;
+  border-radius: 0.5rem !important;
+  font-weight: bold !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* リンクのアンダーライン削除 */
+.no-underline {
+  text-decoration: none !important;
+}
