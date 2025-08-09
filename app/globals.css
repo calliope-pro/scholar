@@ -227,3 +227,18 @@ a:focus,
 .no-underline {
   text-decoration: none !important;
 }
+
+/* カード内のリンクのborder/outline削除 */
+.morphism-card-subtle a,
+.morphism-card a {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.morphism-card-subtle a:focus,
+.morphism-card a:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
