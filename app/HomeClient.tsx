@@ -1,6 +1,6 @@
 "use client";
 
-import type { ScholarDataType } from "./api/scholarships/route";
+import type { ScholarDataType } from "../lib/scholarships";
 import { Fragment, useMemo, useState } from "react";
 import { Listbox, RadioGroup, Switch, Transition } from "@headlessui/react";
 import Link from "next/link";

@@ -1,4 +1,3 @@
-import { NextRequest } from 'next/server';
 import * as cheerio from 'cheerio';
 
 export type ScholarDataType = {
@@ -199,23 +198,12 @@ async function scrapeScholarships(): Promise<Record<string, string>[]> {
     return results;
 }
 
-export async function GET(request: NextRequest) {
+export async function getScholarshipData(): Promise<ScholarDataType[]> {
     try {
         const rawData = await scrapeScholarships();
-        const parsedData = parseScholarships(rawData);
-        return new Response(JSON.stringify(parsedData), {
-            status: 200,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+        return parseScholarships(rawData);
     } catch (error) {
         console.error('Error fetching scholarships:', error);
-        return new Response(JSON.stringify({ error: 'Failed to fetch scholarships' }), {
-            status: 500,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+        return [];
     }
 }
