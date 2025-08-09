@@ -370,7 +370,7 @@ export default function Home() {
             <div
               key={scholarColumn["団体名"]}
               id={scholarColumn["団体名"]}
-              className="morphism-card-subtle rounded-3xl cursor-pointer select-none"
+              className="morphism-card-subtle rounded-3xl select-none"
             >
               <div className="px-10 py-6 border-b border-slate-400/30">
                 <Link
