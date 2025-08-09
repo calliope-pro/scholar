@@ -242,3 +242,17 @@ a:focus,
   border: none !important;
   box-shadow: none !important;
 }
+
+.morphism-card-subtle a:active,
+.morphism-card a:active {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.morphism-card-subtle a:visited,
+.morphism-card a:visited {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
