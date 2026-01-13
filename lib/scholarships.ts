@@ -126,7 +126,8 @@ function parseAmount(results: Record<string, string>, query: string): number | n
 
     if (amounts.length === 1) {
         const amount = parseInt(amounts[0].replace('円', ''));
-        if (!target.includes('年') && !target.includes('一時') && !target.includes('一括')) {
+        // 「年」「回」「一時」「一括」が含まれる場合は月額×12しない
+        if (!target.includes('年') && !target.includes('回') && !target.includes('一時') && !target.includes('一括')) {
             return amount * 12;
         }
         return amount;
@@ -142,8 +143,13 @@ function parseDuplication(results: Record<string, string>, query: string): 'o' |
     }
 
     const target = results[query].normalize('NFKC');
-    if (target === '可') return 'o';
-    if (target === '不可') return 'x';
+
+    // 「可」が含まれる場合は重複可
+    if (target.includes('可')) return 'o';
+
+    // 「不可」が含まれ、「可」が含まれない場合は重複不可
+    if (target.includes('不可')) return 'x';
+
     return '?';
 }
 
@@ -158,7 +164,7 @@ function parseDeadline(results: Record<string, string>, query: string): string {
 }
 
 function parseScholarships(rawData: Record<string, string>[]): ScholarDataType[] {
-    return rawData.map(result => {
+    return rawData.map((result) => {
         const parsed = { ...result } as any;
 
         parsed['p対象者'] = parseGrade(result, '対象者');
@@ -179,20 +185,35 @@ async function scrapeScholarships(): Promise<Record<string, string>[]> {
 
     const results: Record<string, string>[] = [];
 
-    $('.scholarWrap > table').each((_, table) => {
+    // より堅牢なセレクタ
+    const tables = $('.scholarWrap > table.table_type06');
+
+    tables.each((_, table) => {
         const scholarData: Record<string, string> = {};
 
         $(table).find('tr').each((_, tr) => {
             const cells = $(tr).children();
+            // 最初のセルが空でない行のみ処理
             if (cells.length >= 2) {
-                scholarData[$(cells[0]).text().trim()] = $(cells[1]).text().trim();
+                const key = $(cells[0]).text().trim();
+                const value = $(cells[1]).text().trim();
+                if (key) {
+                    scholarData[key] = value;
+                }
             }
             if (cells.length >= 4) {
-                scholarData[$(cells[2]).text().trim()] = $(cells[3]).text().trim();
+                const key = $(cells[2]).text().trim();
+                const value = $(cells[3]).text().trim();
+                if (key) {
+                    scholarData[key] = value;
+                }
             }
         });
 
-        results.push(scholarData);
+        // 「団体名」が含まれている場合のみ追加
+        if (scholarData['団体名']) {
+            results.push(scholarData);
+        }
     });
 
     return results;

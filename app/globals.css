@@ -2,257 +2,425 @@
 @tailwind components;
 @tailwind utilities;
 
-/* フリーフォームグラデーション背景 */
-.freeform-gradient {
+/* ========================================
+   NEO-ACADEMIC BOLD - Student-First Design
+   ======================================== */
+
+/* Import distinctive typography */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Bebas+Neue&display=swap');
+
+/* CSS Variables */
+@layer base {
+  :root {
+    /* Dominant base - Clean & Bright */
+    --base-cream: #FFFBF7;
+    --base-white: #FFFFFF;
+    --base-sand: #F5F0E8;
+
+    /* Bold primary - Deep Academic Blue */
+    --primary-blue: #1A4D7C;
+    --primary-deep: #0F2D47;
+    --primary-light: #2E6B9F;
+
+    /* Sharp accent - Sunset Orange */
+    --accent-sunset: #FF6B35;
+    --accent-coral: #FF8560;
+    --accent-glow: #FFB347;
+
+    /* Supporting colors */
+    --ink-dark: #1A1A2E;
+    --ink-medium: #2D2D44;
+    --ink-light: #6B6B7B;
+
+    /* Semantic */
+    --success: #10B981;
+    --warning: #F59E0B;
+
+    /* Spacing & Layout */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+  }
+}
+
+/* ========================================
+   Typography System - Distinctive & Bold
+   ======================================== */
+@layer base {
+  * {
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-base-cream text-ink-dark antialiased;
+    font-feature-settings: 'palt' 1;
+    line-height: 1.7;
+  }
+
+  /* Display headings - Extra Bold & Condensed */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink-dark);
+  }
+
+  h1 {
+    @apply text-5xl sm:text-6xl lg:text-7xl;
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl sm:text-3xl;
+  }
+
+  /* Text selection */
+  ::selection {
+    @apply bg-accent-sunset text-white;
+  }
+}
+
+/* ========================================
+   Dynamic Background - Energy & Movement
+   ======================================== */
+.neo-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(135deg, #0F172A 0%, #1E293B 40%, #334155 80%, #475569 100%);
-  overflow: hidden;
-  z-index: -1;
+  background:
+    /* Large diagonal shape */
+    linear-gradient(135deg, transparent 0%, transparent 40%, rgba(26, 77, 124, 0.03) 40%, rgba(26, 77, 124, 0.03) 45%, transparent 45%),
+    /* Offset accent shape */
+    linear-gradient(225deg, transparent 55%, rgba(255, 107, 53, 0.04) 55%, rgba(255, 107, 53, 0.04) 60%, transparent 60%),
+    /* Clean base */
+    var(--base-cream);
+  z-index: -2;
 }
 
-.freeform-gradient::before {
+/* Floating accent blobs */
+.neo-background::before {
   content: '';
   position: absolute;
-  top: -20%;
-  left: -10%;
-  width: 60%;
-  height: 80%;
-  background: linear-gradient(45deg, rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.25));
-  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
-  filter: blur(40px);
-  animation: organic1 25s ease-in-out infinite;
+  top: -10%;
+  right: -5%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: float-blob 20s ease-in-out infinite;
 }
 
-.freeform-gradient::after {
+.neo-background::after {
   content: '';
-  position: absolute;
-  top: 20%;
-  right: -15%;
-  width: 70%;
-  height: 60%;
-  background: linear-gradient(225deg, rgba(236, 72, 153, 0.25), rgba(16, 185, 129, 0.3));
-  border-radius: 40% 60% 50% 70% / 60% 30% 70% 40%;
-  filter: blur(50px);
-  animation: organic2 30s ease-in-out infinite reverse;
-}
-
-.freeform-gradient .blob1 {
   position: absolute;
   bottom: -10%;
-  left: 20%;
-  width: 50%;
-  height: 70%;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(139, 92, 246, 0.25));
-  border-radius: 50% 70% 30% 50% / 40% 50% 60% 70%;
-  filter: blur(35px);
-  animation: organic3 35s ease-in-out infinite;
+  left: -5%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, rgba(26, 77, 124, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: float-blob 25s ease-in-out infinite reverse;
 }
 
-.freeform-gradient .blob2 {
-  position: absolute;
-  top: 40%;
-  left: 60%;
-  width: 40%;
-  height: 50%;
-  background: linear-gradient(315deg, rgba(6, 182, 212, 0.3), rgba(16, 185, 129, 0.2));
-  border-radius: 70% 30% 60% 40% / 50% 70% 30% 60%;
-  filter: blur(45px);
-  animation: organic4 28s ease-in-out infinite;
+@keyframes float-blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
 }
 
-@keyframes organic1 {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
-    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
-  }
-  25% {
-    transform: translate(10%, -5%) rotate(5deg) scale(1.1);
-    border-radius: 40% 60% 50% 70% / 60% 40% 50% 60%;
-  }
-  50% {
-    transform: translate(-5%, 10%) rotate(-3deg) scale(0.9);
-    border-radius: 70% 30% 60% 40% / 40% 70% 60% 30%;
-  }
-  75% {
-    transform: translate(8%, 5%) rotate(7deg) scale(1.05);
-    border-radius: 50% 70% 40% 60% / 70% 50% 30% 70%;
-  }
-}
+/* ========================================
+   Bold Card System - High Impact
+   ======================================== */
 
-@keyframes organic2 {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
-    border-radius: 40% 60% 50% 70% / 60% 30% 70% 40%;
-  }
-  33% {
-    transform: translate(-8%, 12%) rotate(-8deg) scale(1.15);
-    border-radius: 70% 30% 60% 40% / 40% 60% 50% 70%;
-  }
-  66% {
-    transform: translate(12%, -8%) rotate(10deg) scale(0.85);
-    border-radius: 30% 70% 40% 60% / 70% 40% 60% 30%;
-  }
-}
-
-@keyframes organic3 {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
-    border-radius: 50% 70% 30% 50% / 40% 50% 60% 70%;
-  }
-  20% {
-    transform: translate(15%, -10%) rotate(12deg) scale(1.2);
-    border-radius: 60% 40% 70% 30% / 70% 60% 40% 50%;
-  }
-  40% {
-    transform: translate(-10%, 15%) rotate(-15deg) scale(0.8);
-    border-radius: 40% 60% 50% 70% / 50% 40% 70% 60%;
-  }
-  60% {
-    transform: translate(20%, 8%) rotate(18deg) scale(1.1);
-    border-radius: 70% 30% 60% 40% / 60% 70% 30% 40%;
-  }
-  80% {
-    transform: translate(-5%, -12%) rotate(-10deg) scale(0.95);
-    border-radius: 30% 70% 40% 60% / 40% 30% 60% 70%;
-  }
-}
-
-@keyframes organic4 {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
-    border-radius: 70% 30% 60% 40% / 50% 70% 30% 60%;
-  }
-  40% {
-    transform: translate(-12%, -18%) rotate(-20deg) scale(1.3);
-    border-radius: 30% 70% 40% 60% / 70% 30% 60% 40%;
-  }
-  80% {
-    transform: translate(18%, 12%) rotate(25deg) scale(0.7);
-    border-radius: 60% 40% 70% 30% / 40% 60% 70% 30%;
-  }
-}
-
-/* グラスモーフィズムスタイル */
-.morphism-card {
-  background: 
-    linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%),
-    linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
-  backdrop-filter: blur(40px) saturate(200%) brightness(1.1);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    0 2px 16px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+/* Primary Card - Strong shadow & border */
+.neo-card {
+  background: var(--base-white);
+  border: none;
+  box-shadow:
+    0 1px 3px rgba(26, 77, 124, 0.08),
+    0 8px 24px rgba(26, 77, 124, 0.06),
+    0 0 0 1px rgba(26, 77, 124, 0.05);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
 
-.morphism-card::before {
+.neo-card::before {
   content: '';
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.6s ease;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-blue), var(--accent-sunset));
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.morphism-card-subtle {
-  background: 
-    linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 100%),
-    linear-gradient(45deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
-  backdrop-filter: blur(30px) saturate(180%) brightness(1.05);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 
-    0 6px 24px rgba(0, 0, 0, 0.25),
-    0 1px 12px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.08);
-  position: relative;
-  overflow: hidden;
+.neo-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 4px 6px rgba(26, 77, 124, 0.08),
+    0 16px 48px rgba(26, 77, 124, 0.1),
+    0 0 0 1px rgba(26, 77, 124, 0.08);
 }
 
-.morphism-card-subtle::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-  transition: left 0.6s ease;
+.neo-card:hover::before {
+  opacity: 1;
 }
 
-/* アクセシビリティ - 強化されたフォーカス表示 */
-*:focus {
-  outline: 3px solid #fbbf24 !important;
-  outline-offset: 2px !important;
+/* Featured Card - Extra bold */
+.neo-card-featured {
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-deep));
+  box-shadow:
+    0 8px 16px rgba(26, 77, 124, 0.2),
+    0 24px 48px rgba(26, 77, 124, 0.15);
+  color: white;
 }
 
-/* 特定要素のフォーカススタイル */
-button:focus,
-input:focus,
-select:focus,
-textarea:focus,
-a:focus,
-[role="button"]:focus,
-[tabindex]:focus {
-  box-shadow: 
-    0 0 0 3px rgba(251, 191, 36, 0.5),
-    0 0 0 6px rgba(251, 191, 36, 0.2) !important;
+.neo-card-featured h1,
+.neo-card-featured h2,
+.neo-card-featured h3,
+.neo-card-featured h4,
+.neo-card-featured h5,
+.neo-card-featured h6 {
+  color: white;
 }
 
-/* スキップリンク用のスタイル強化 */
+.neo-card-featured p,
+.neo-card-featured span,
+.neo-card-featured div {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.neo-card-featured:hover {
+  box-shadow:
+    0 12px 24px rgba(26, 77, 124, 0.25),
+    0 32px 64px rgba(26, 77, 124, 0.2);
+}
+
+/* ========================================
+   Input System - Clean & Accessible
+   ======================================== */
+
+/* Text input */
+.neo-input {
+  @apply w-full px-5 py-4 bg-white border-2 border-ink-light/20 rounded-lg;
+  @apply text-ink-dark placeholder:text-ink-light/60;
+  @apply transition-all duration-200;
+  font-size: 1rem;
+}
+
+.neo-input:hover {
+  border-color: var(--primary-light);
+}
+
+.neo-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 4px rgba(26, 77, 124, 0.1);
+}
+
+/* Custom scrollbar */
+@layer utilities {
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--base-sand);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-primary-blue/40;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-blue/60;
+  }
+}
+
+/* ========================================
+   Animation Utilities
+   ======================================== */
+@layer utilities {
+  .fade-in {
+    animation: fade-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .fade-in-delayed {
+    animation: fade-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s backwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .slide-in-left {
+    animation: slide-in-left 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Stagger children */
+  .stagger > * {
+    animation: fade-in 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  }
+
+  .stagger > *:nth-child(1) { animation-delay: 0ms; }
+  .stagger > *:nth-child(2) { animation-delay: 50ms; }
+  .stagger > *:nth-child(3) { animation-delay: 100ms; }
+  .stagger > *:nth-child(4) { animation-delay: 150ms; }
+  .stagger > *:nth-child(5) { animation-delay: 200ms; }
+  .stagger > *:nth-child(n+6) { animation-delay: 250ms; }
+}
+
+/* ========================================
+   Button System - Bold & Clickable
+   ======================================== */
+
+/* Primary button */
+.neo-btn-primary {
+  @apply inline-flex items-center justify-center gap-2 px-8 py-4;
+  @apply bg-primary-blue text-white font-bold text-lg;
+  @apply rounded-lg;
+  @apply transition-all duration-200;
+  box-shadow: 0 4px 14px rgba(26, 77, 124, 0.3);
+}
+
+.neo-btn-primary:hover {
+  background: var(--primary-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(26, 77, 124, 0.4);
+}
+
+.neo-btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Accent button */
+.neo-btn-accent {
+  @apply inline-flex items-center justify-center gap-2 px-8 py-4;
+  @apply bg-accent-sunset text-white font-bold text-lg;
+  @apply rounded-lg;
+  @apply transition-all duration-200;
+  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.3);
+}
+
+.neo-btn-accent:hover {
+  background: #E55A2B;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+}
+
+/* Secondary button */
+.neo-btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3;
+  @apply bg-white text-primary-blue font-semibold;
+  @apply border-2 border-primary-blue/20 rounded-lg;
+  @apply transition-all duration-200;
+}
+
+.neo-btn-secondary:hover {
+  border-color: var(--primary-blue);
+  background: rgba(26, 77, 124, 0.05);
+}
+
+/* ========================================
+   Focus & Accessibility
+   ======================================== */
+*:focus-visible {
+  outline: 3px solid var(--accent-sunset);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Skip link */
+.skip-link {
+  @apply sr-only;
+}
+
 .skip-link:focus {
-  position: absolute !important;
-  top: 1rem !important;
-  left: 1rem !important;
-  z-index: 9999 !important;
-  padding: 1rem !important;
-  background: #1e40af !important;
-  color: white !important;
-  text-decoration: none !important;
-  border-radius: 0.5rem !important;
-  font-weight: bold !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  @apply not-sr-only fixed top-4 left-4 z-50;
+  @apply px-6 py-3 bg-accent-sunset text-white font-bold;
+  @apply rounded-lg;
+  @apply shadow-lg;
 }
 
-/* リンクのアンダーライン削除 */
-.no-underline {
-  text-decoration: none !important;
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-/* カード内のリンクのborder/outline削除 */
-.morphism-card-subtle a,
-.morphism-card a {
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
+/* ========================================
+   Utility Classes
+   ======================================== */
+
+/* Text gradient for emphasis */
+.text-gradient-bold {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, var(--primary-blue), var(--accent-sunset));
 }
 
-.morphism-card-subtle a:focus,
-.morphism-card a:focus {
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
+/* Badge styling */
+.neo-badge {
+  @apply inline-flex items-center gap-2 px-4 py-2;
+  @apply bg-primary-blue/10 text-primary-blue;
+  @apply font-semibold text-sm rounded-full;
+  border: 1px solid rgba(26, 77, 124, 0.2);
 }
 
-.morphism-card-subtle a:active,
-.morphism-card a:active {
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
+/* Accent badge */
+.neo-badge-accent {
+  @apply bg-accent-sunset/10 text-accent-sunset;
+  border-color: rgba(255, 107, 53, 0.2);
 }
 
-.morphism-card-subtle a:visited,
-.morphism-card a:visited {
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
+/* Link styling */
+.neo-link {
+  @apply text-primary-blue font-semibold underline decoration-2 underline-offset-2;
+  @apply transition-all duration-200;
+  text-decoration-color: rgba(26, 77, 124, 0.3);
+}
+
+.neo-link:hover {
+  text-decoration-color: var(--primary-blue);
+  color: var(--primary-deep);
 }
